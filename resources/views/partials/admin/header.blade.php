@@ -13,20 +13,43 @@
                 href="{{route('app.list')}}">學單列表</a><a
                 class="text-penpen-primary hover:text-penpen-dark transition-colors font-medium"
                 href="{{route('auth.login')}}">成為教育者</a></nav>
-        <div class="flex items-center space-x-4"><button onclick="location.href='{{route('auth.login')}}'"
+        <div class="flex items-center space-x-4">
+                <button onclick="location.href='{{route('auth.login')}}'"
                 class="items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 hidden md:block">
                 @if (\Auth::check()) 
                 {{ Auth::user()->name }}
                 @else    
                 登入
                 @endif
-                
-                </button><button
+                </button>
+                <button data-toggle="collapse" data-target="#collapseMenu"
                 class="md:hidden text-gray-700"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-                </svg></button></div>
+                </svg></button>
+        </div>
+    </div>
+    <div class="container mx-auto collapse" id="collapseMenu">
+        <ul class="p-2 text-right space-x-6">
+                <li class="pb-1"><a
+                class="text-gray-700 hover:text-penpen-primary transition-colors font-medium"
+                href="{{route('app.home')}}">首頁</a></li>
+                <li class="pb-1"><a
+                class="text-gray-700 hover:text-penpen-primary transition-colors font-medium"
+                href="{{route('app.list')}}">學單列表</a></li>
+                <li class="pb-3"><a
+                class="text-penpen-primary hover:text-penpen-dark transition-colors font-medium"
+                href="{{route('auth.login')}}">成為教育者</a></li>
+                <li><button onclick="location.href='{{route('auth.login')}}'"
+                class="btn btn-outline-dark ">
+                @if (\Auth::check()) 
+                {{ Auth::user()->name }}
+                @else    
+                登入
+                @endif
+                </button></li>
+        </ul>
     </div>
 </header>
 <!-- Header Section End -->
